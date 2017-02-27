@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #test{
+            width:200px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="test"></div>
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src="drawRoundRatio.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#test').drawRoundRatio([23,56,98,76],{
+            color:['#548B54','#00FF00','#8E388E','#B8860B'],
+            hadCenterRound:true,
+            centerRoundSize:0.7
+        });
+    });
+</script>
+</body>
+</html>
