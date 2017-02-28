@@ -45,7 +45,7 @@ CanvasRenderingContext2D.prototype.sector = function (x, y, radius, sDeg, eDeg, 
                 startAngle:1.5
             };
             $.extend(o, option);
-            if (!W || !H) {
+            if (W[0]==0 || H[0]==0) {
                 throw('必须设定宽度和高度');
                 return;
             } else {
@@ -58,14 +58,15 @@ CanvasRenderingContext2D.prototype.sector = function (x, y, radius, sDeg, eDeg, 
 
             var scale = [], total = 0;
             for (var i in data) {
-                total += data[i];
+                total += parseFloat(data[i]);
             }
             for (var j in data) {
                 scale[j] = data[j] / total * 360;
             }
-            var myCanvas = $('<canvas id="myCanvas" width=' + W + ' height=' + H + '>Your browser does not support the canvas element.</canvas>');
+            var id = new Date().getTime();
+            var myCanvas = $('<canvas id='+id+' width=' + W + ' height=' + H + '>Your browser does not support the canvas element.</canvas>');
             $(this).append(myCanvas);
-            var c = $('#myCanvas')[0].getContext('2d');
+            var c = $('#'+id)[0].getContext('2d');
             for (var k in scale) {
                 var start = o.startAngle*180, end = o.startAngle*180;
                 for (var a = 0; a <= k; a++) {
